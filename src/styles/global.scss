@@ -1,0 +1,76 @@
+@import "./reset";
+@import "./variables";
+@import "./classes";
+
+html, body {
+	height: 100vh;
+    width: 100%;
+	font-family: 'Mukta', sans-serif;
+	text-rendering: optimizelegibility;
+	-webkit-font-smoothing: antialiased;
+	background-color: $color-dark-1!important;
+	color: $color-dark-1-contrast!important;
+    -webkit-top-highlight-color: transparent;
+}
+h1, h2, h3, h4, h5, h6{ font-family: 'Saira', sans-serif;  color: $color-light; }
+::-webkit-scrollbar{width: 0.6vw; height: .6vh;}
+::-webkit-scrollbar-thumb{background: $color-primary;border-radius: 5px;}
+/***************
+* TEXT COLOR
+***************/
+.color-primary {color: $color-primary!important;}
+.color-green {color: $color-green!important;}
+.color-yellow {color: $color-yellow!important;}
+.color-red {color: $color-red!important;}
+.color-dark {color: $color-blue!important;}
+.color-dark {color: $color-dark-1!important;}
+.color-medium {color: $color-medium!important;}
+.color-light {color: $color-light!important;}
+.color-white {color: #FAFBFF!important;}
+/***************
+* BACKGROUND-COLOR
+***************/
+.bg-primary {background-color: $color-primary!important;}
+.bg-green {background-color: $color-green!important;}
+.bg-yellow {background-color: $color-yellow!important;}
+.bg-red {background-color: $color-red!important;}
+.bg-blue {background-color: $color-blue!important;}
+.bg-dark {background-color: $color-dark-1!important;}
+.bg-medium {background-color: $color-medium!important;}
+.bg-light {background-color: $color-light!important;}
+.bg-white {background-color: #FAFBFF!important;}
+/***************
+* A
+***************/ 
+a{
+    text-decoration: none;
+    color: $color-primary-contrast;
+    display: inline-block;
+	position: relative; 
+		&:not(.a-not-effect)::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			border-radius: 4px;
+			background-color: currentColor;
+			bottom: 0;
+			left: 0;
+			transform-origin: right;
+			transform: scaleX(0);
+			transition: transform .3s ease-in-out;
+		} 
+		&:not(.a-not-effect):hover::before {
+			transform-origin: left;
+			transform: scaleX(1);
+		}
+}
+/***************
+* GENERAL
+***************/
+.action-button{ border: 1px solid; border-radius: 50%; }
+.action-paper{
+	&:not(.bg-yellow):not(.bg-blue){ background-color: $color-dark-1!important; }
+	border-radius: 18px!important;
+	background-image: none!important;
+}
