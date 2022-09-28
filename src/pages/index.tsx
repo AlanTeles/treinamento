@@ -16,7 +16,6 @@ export default function Adm({ children }: {children: React.ReactNode}) {
             >
                 <Toolbar />    
                 {children}
-                
                 <Toolbar />
             </Box>
             <Box sx={{ flexGrow: 1 }}>

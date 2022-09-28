@@ -1,9 +1,8 @@
-import { Container } from "@mui/material";
 const Dashboard = () => {
     return (
-        <Container>
-            DashboardPage
-        </Container>
+        <h2>
+            Dashboard page
+        </h2>
     );
 }
 export default Dashboard;
