@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Grid, Stack, Paper, Tooltip, Switch } from "@mui/material";
 import { InfoOutlined } from "@mui/icons-material";
 
@@ -5,7 +6,6 @@ import { ActionCardProps, ActionProps, ActionItemProps } from "./../../../_types
 
 import FaucetSVG from "./../../../assets/img/faucet.svg";
 import LampSVG from "./../../../assets/img/lamp.svg";
-
 
 const Actions = ({ led, bomba1, bomba2, onChange }: ActionCardProps) => {
     return (
@@ -35,7 +35,7 @@ const Actions = ({ led, bomba1, bomba2, onChange }: ActionCardProps) => {
             </Grid>
 
             <Grid item xs={12} sm={4} className="text-align-center">
-                <Action name="2ª bomba" color={bomba1 ? "bg-blue" : undefined}>
+                <Action name="2ª bomba" color={bomba2 ? "bg-blue" : undefined}>
                     <ActionItem
                         tooltip="Para irrigar o vaso da direita"
                         icon={<img src={FaucetSVG} height={25} className="mt-4" alt="" />}
@@ -59,6 +59,10 @@ const Action = ({ children, name, color }: ActionProps) => {
     );
 }
 const ActionItem = ({ tooltip, type, icon, switchActive, onChange }: ActionItemProps) => {
+    const [state, setState] = useState(switchActive || false);
+    useEffect(() => {
+        onChange(type, state);
+    }, [state]);
     return(
         <Stack position="relative" direction="column" alignItems="center">
             <Tooltip
@@ -74,8 +78,9 @@ const ActionItem = ({ tooltip, type, icon, switchActive, onChange }: ActionItemP
             {icon}
             <Switch
                 size="small"
-                defaultChecked={switchActive}
-                onChange={ev => onChange(type, ev.target.checked)}
+                value={state}
+                defaultChecked={false}
+                onChange={ev => setState(ev.target.checked)}
                 color="info"
             />
         </Stack>

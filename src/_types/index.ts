@@ -25,9 +25,9 @@ export interface ComponentChartProps extends FunctionChartDataParams {
  ***************************/
 export type InfluxResponseItem = {
     series: {
-        columns: Array<[]>
+        columns: string[]
         name: string
-        values: Array<[]>
+        values: any[]
     }[]
     statement_id: number
 }
@@ -76,10 +76,12 @@ export type TelemetryProps = {
  ** INFLUX
  ***************************/
 export type influxProps = {
+    datatype: string
+    device: string 
     sensorname: string
     sensortype: string
     time: string
-    value: number
+    value: string
 }
 /***************************
  ** STATUS
@@ -95,9 +97,9 @@ export type LinearProgressWithLabelProps = {
  ** ACTIONS CARD
  ***************************/
  export type ActionCardProps = {
-    led: boolean
-    bomba1: boolean
-    bomba2: boolean
+    led?: boolean
+    bomba1?: boolean
+    bomba2?: boolean
     onChange: (type:"led"|"bomba1"|"bomba2", value:boolean) => void
 }
 export type ActionProps = {
@@ -110,5 +112,5 @@ export type ActionItemProps = {
     icon: JSX.Element
     type: "led"|"bomba1"|"bomba2"
     onChange: (type:"led"|"bomba1"|"bomba2", value:boolean) => void
-    switchActive: boolean
+    switchActive?: boolean
 }

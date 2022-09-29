@@ -39,7 +39,10 @@ function LinearProgressWithLabel(props: LinearProgressProps & LinearProgressWith
         </Box>
     );
 }
-const Status = ({ temp, humid }: { temp?: number, humid?: number }) => {
+const Status = ({ temp, humid }: {
+    temp?: number
+    humid?: number
+}) => {
     const normalise = (value: number, MIN: number, MAX: number) => ((value - MIN) * 100) / (MAX - MIN);
     return (
         <div>
